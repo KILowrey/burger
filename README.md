@@ -37,7 +37,7 @@ tests
 Concept, title, setup instructions, and directory structure provided by Trilogy Education.
 
 Other resources and helpful people:
- * credit
+ * "CatsApp" activity from week 13 of my class.
  * credit
  * credit
 
