@@ -9,10 +9,9 @@ const burger = require('../models/burger.js');
 router.get("/", function(req, res) {
   burger.all(function(data) {
     // "hbsObject" is for Handlebars-Object
-    let hbsObject = {
+    const hbsObject = {
       burgers: data
     };
-    console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
