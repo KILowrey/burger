@@ -8,3 +8,4 @@ VALUES ("Krabby Patty");
 
 INSERT INTO burgers (name)
 VALUES ("A cheeseburger. Hold on... Change of plans. A BACON cheeseburger. VVith, VVaffle fries.");
+-- Spies are Forever
