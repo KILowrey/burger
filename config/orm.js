@@ -36,44 +36,54 @@ function objToSql(object) {
 
 // Object for all our SQL statement functions.
 var orm = {
-  // All
-  all: function(tableInput, callback) {
-    const queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(error, result) {
-      if (error) {
-        throw error;
-      }
-      callback(result);
+  // Find All
+  findAll: function(tableInput) {
+    return new Promise(function(res,rej) {
+      const queryString = "SELECT * FROM " + tableInput + ";";
+      connection.query(queryString, function(err,result) {
+        if(err) throw err;
+        res(result);
+      });
     });
   },
   // Create
-  create: function(table, cols, vals, callback) {
-    const queryString = "INSERT INTO " + table;
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
-    connection.query(queryString, vals, function(error, result) {
-      if (error) {
-        throw error;
-      }
-      callback(result);
+  create: function(table, cols, vals) {
+    return new Promise(function(res,rej) {
+      const queryString = "INSERT INTO " + table;
+      queryString += " (";
+      queryString += cols.toString();
+      queryString += ") ";
+      queryString += "VALUES (";
+      queryString += printQuestionMarks(vals.length);
+      queryString += ") ";
+      connection.query(queryString, vals, function(err,result) {
+        if (err) throw err;
+        res(result);
+      });
     });
   },
   // Update
-  update: function(table, objColVals, condition, callback) {
-    const queryString = "UPDATE " + table;
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-    connection.query(queryString, function(error, result) {
-      if (error) {
-        throw error;
-      }
-      callback(reslut);
+  update: function(table, objColVals, condition) {
+    return new Promise(function(res,rej) {
+      const queryString = "UPDATE " + table;
+      queryString += " SET ";
+      queryString += objToSql(objColVals);
+      queryString += " WHERE ";
+      queryString += condition;
+      connection.query(queryString, function(err,result) {
+        if (err) throw error;
+        res(result);
+      });
+    });
+  },
+  // remove
+  remove: function(id) {
+    return new Promise(function(res,rej) {
+      const query = "DELETE FROM burgers WHERE id = " + id;
+      connection.query(query, function(err,result) {
+        if (err) throw err;
+        res(result);
+      });
     });
   }
 };
