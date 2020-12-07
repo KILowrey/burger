@@ -10,7 +10,7 @@ router.get('/', function(req,res) {
 
 // the main page
 router.get('/burgers', function(req,res) {
-  burger.all(function(burgerData) {
+  burger.findAll(function(burgerData) {
     // wrapper for orm.js that using MySQL query callback will return burger_data, render to index w/ handlebar
     res.render('index', { burger_data: burgerData });
   });
