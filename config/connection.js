@@ -2,10 +2,10 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "root",
+  host: "localhost", // god forbid you host somewhere else
+  port: 3306, // or whatever port you use
+  user: "root", // or your username (but why would you use something other than root?)
+  password: "root", // if username is root password is also root. otherwise you're on your own
   database: "burgers_db"
 });
 
