@@ -3,10 +3,10 @@ const orm = require('../config/orm.js');
 
 // Code that will call the ORM functions using burger specific input for the ORM.
 const burger = {
-  // All
-  all: function() {
+  // Find All
+  findAll: function() {
     return new Promise (function(resolve,reject) {
-      orm.all('burgers')
+      orm.findAll()
       .then(function(data) {
         resolve(data);
       });
@@ -15,11 +15,7 @@ const burger = {
   // Create
   create: function(name) {
     return new Promise (function(resolve,reject) {
-      orm.create('burgers', [
-        "burger_name", "devoured"
-      ], [
-        name, false
-      ])
+      orm.create(burger)
       .then(function(data) {
         resolve(data);
       });
@@ -28,10 +24,16 @@ const burger = {
   // Update
   update: function(id) {
     return new Promise (function(resolve,reject) {
-      const condition = 'id=' + id;
-      orm.update('burgers', {
-        devoured: true
-      }, condition)
+      orm.update(id,eaten)
+      .then(function(data) {
+        resolve(data);
+      });
+    });
+  },
+  // Delete
+  delete: function(id) {
+    return new Promise(function(resolve,reject) {
+      orm.delete(id)
       .then(function(data) {
         resolve(data);
       });
