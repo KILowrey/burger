@@ -1,9 +1,9 @@
 <main class="container text-center">
-  <div>
+  <div class="column is-full">
     <h1>Eat-Da-Burger!</h1>
     <img src="/assets/img/burger.jpeg" alt="a ugly images of a 2d cloth burger on a white background" />
   </div>
-  <section class="column">
+  <section class="column is-half">
     <h2>Burgers on the Table:</h2>
     {{#each burger}}
       {{#unless devoured}}
@@ -13,7 +13,7 @@
       {{/unless}}
     {{/each}}
   </section>
-  <section class="column">
+  <section class="column is-half">
     <h2>Burgers in your Tummy:</h2>
     {{#each burger}}
       {{#if devoured}}
@@ -23,7 +23,7 @@
       {{/if}}
     {{/each}}
   </section>
-  <section>
+  <section class="column is-full">
     <h2>Grill a Burger</h2>
     <form class="create-form">
       <div class="form-group">
